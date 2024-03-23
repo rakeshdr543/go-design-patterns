@@ -2,10 +2,9 @@ package main
 
 // factory "github.com/rakeshdr543/go-design-patterns/factory"
 // af "github.com/rakeshdr543/go-design-patterns/abstract_factory"
+// "github.com/rakeshdr543/go-design-patterns/singleton"
 import (
-	"fmt"
-
-	"github.com/rakeshdr543/go-design-patterns/singleton"
+	observer "github.com/rakeshdr543/go-design-patterns/observer"
 )
 
 func main() {
@@ -35,11 +34,22 @@ func main() {
 
 	// Singleton pattern
 
-	for i := 0; i < 100; i++ {
-		go singleton.GetInstance()
-	}
+	// for i := 0; i < 10; i++ {
+	// 	go singleton.GetInstance()
+	// }
 
-	fmt.Scanln()
+	// fmt.Scanln()
+
+	// Observer pattern
+	appleMonitor := observer.NewItem("Apple Monitor")
+	customer1 := observer.NewCustomer("rakesh1@gmail.com")
+	customer2 := observer.NewCustomer("ramesh2@gmail.com")
+
+	appleMonitor.Register(customer1)
+	appleMonitor.Register(customer2)
+
+	appleMonitor.UpdateAvailability()
+
 }
 
 // func printShoeDetails(shoe af.IShoe) {
