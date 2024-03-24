@@ -1,10 +1,7 @@
 package main
 
-// factory "github.com/rakeshdr543/go-design-patterns/factory"
-// af "github.com/rakeshdr543/go-design-patterns/abstract_factory"
-// "github.com/rakeshdr543/go-design-patterns/singleton"
 import (
-	observer "github.com/rakeshdr543/go-design-patterns/observer"
+	adapter "github.com/rakeshdr543/go-design-patterns/adapter"
 )
 
 func main() {
@@ -41,14 +38,54 @@ func main() {
 	// fmt.Scanln()
 
 	// Observer pattern
-	appleMonitor := observer.NewItem("Apple Monitor")
-	customer1 := observer.NewCustomer("rakesh1@gmail.com")
-	customer2 := observer.NewCustomer("ramesh2@gmail.com")
+	// appleMonitor := observer.NewItem("Apple Monitor")
+	// customer1 := observer.NewCustomer("rakesh1@gmail.com")
+	// customer2 := observer.NewCustomer("ramesh2@gmail.com")
 
-	appleMonitor.Register(customer1)
-	appleMonitor.Register(customer2)
+	// appleMonitor.Register(customer1)
+	// appleMonitor.Register(customer2)
 
-	appleMonitor.UpdateAvailability()
+	// appleMonitor.UpdateAvailability()
+
+	// Builder pattern
+	// normalBuilder := builder.GetHouseBuilder("normal")
+	// iglooBuilder := builder.GetHouseBuilder("igloo")
+
+	// director := builder.NewDirector(normalBuilder)
+	// normalHouse := director.BuildHouse()
+
+	// director.SetBuilder(iglooBuilder)
+	// iglooHouse := director.BuildHouse()
+
+	// fmt.Println("Normal House  :", normalHouse)
+	// fmt.Println("Igloo House  :", iglooHouse)
+
+	// Decorator pattern
+	// vegPizza := &decorator.VegPizza{}
+	// cheesePizza := &decorator.CheeseTopping{
+	// 	Pizza: vegPizza,
+	// }
+
+	// mushroomPizza := &decorator.MushroomTopping{
+	// 	Pizza: cheesePizza,
+	// }
+
+	// println("Price of veg pizza: ", vegPizza.GetPrice())
+	// println("Price of veg pizza with cheese: ", cheesePizza.GetPrice())
+	// println("Price of veg pizza with cheese and mushroom: ", mushroomPizza.GetPrice())
+
+	// Adapter pattern
+	client := &adapter.Client{}
+
+	mac := &adapter.Mac{}
+	client.ConnectToTypeC(mac)
+
+	windowMachine := &adapter.Window{}
+	windowsMachineAdapter := &adapter.WindowAdapter{
+		Window: windowMachine,
+	}
+
+	client.ConnectToTypeC(windowsMachineAdapter)
 
 }
 
