@@ -1,7 +1,7 @@
 package main
 
 import (
-	adapter "github.com/rakeshdr543/go-design-patterns/adapter"
+	facade "github.com/rakeshdr543/go-design-patterns/facade"
 )
 
 func main() {
@@ -75,17 +75,22 @@ func main() {
 	// println("Price of veg pizza with cheese and mushroom: ", mushroomPizza.GetPrice())
 
 	// Adapter pattern
-	client := &adapter.Client{}
+	// client := &adapter.Client{}
 
-	mac := &adapter.Mac{}
-	client.ConnectToTypeC(mac)
+	// mac := &adapter.Mac{}
+	// client.ConnectToTypeC(mac)
 
-	windowMachine := &adapter.Window{}
-	windowsMachineAdapter := &adapter.WindowAdapter{
-		Window: windowMachine,
-	}
+	// windowMachine := &adapter.Window{}
+	// windowsMachineAdapter := &adapter.WindowAdapter{
+	// 	Window: windowMachine,
+	// }
 
-	client.ConnectToTypeC(windowsMachineAdapter)
+	// client.ConnectToTypeC(windowsMachineAdapter)
+
+	account := facade.NewWalletFacade("rakesh12", 12346)
+
+	account.AddMoneyToAccount(12346, 100)
+	account.DeductMoneyFromAccount(12346, 10000)
 
 }
 
